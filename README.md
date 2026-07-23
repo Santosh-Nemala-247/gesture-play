@@ -32,3 +32,15 @@ An AI-powered gesture-controlled gaming platform that allows users to play games
 ### Day 3 – Live Webcam
 
 ![Day 3](screenshots/day3-webcam.png)
+
+## Day 4 - MediaPipe Initialization
+
+### Features
+- Installed MediaPipe Tasks Vision
+- Loaded HandLandmarker model
+- Successfully initialized hand detector
+- Live webcam feed running
+
+### Screenshot
+
+![Day 4](screenshots/day4-mediapipe-loaded.png)
