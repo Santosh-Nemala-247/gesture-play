@@ -1,6 +1,13 @@
+import { useEffect } from "react";
+import { createHandDetector } from "../services/handDetector";
 import Webcam from "react-webcam";
 
 function HandTracker() {
+
+  useEffect(() => {
+    createHandDetector();
+  }, []);
+
   return (
     <div
       style={{
