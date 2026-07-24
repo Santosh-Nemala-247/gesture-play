@@ -91,7 +91,7 @@ function HandTracker() {
         <Webcam
           ref={webcamRef}
           audio={false}
-          mirrored={false}
+          mirrored={true}
           screenshotFormat="image/jpeg"
           videoConstraints={{
             width: 1280,
@@ -122,9 +122,9 @@ function HandTracker() {
                 <Line
                   key={index}
                   points={[
-                    landmarks[start].x * 900,
+                    (1 - landmarks[start].x) * 900,
                     landmarks[start].y * 506,
-                    landmarks[end].x * 900,
+                    (1 - landmarks[end].x) * 900,
                     landmarks[end].y * 506,
                   ]}
                   stroke="lime"
@@ -136,7 +136,7 @@ function HandTracker() {
             {landmarks.map((point, index) => (
               <Circle
                 key={index}
-                x={point.x * 900}
+                x={(1 - point.x) * 900}
                 y={point.y * 506}
                 radius={6}
                 fill="lime"
