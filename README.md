@@ -20,12 +20,13 @@ An AI-powered gesture-controlled gaming platform that allows users to play games
 - [ ] Real-Time Gesture Control
 
 ## Progress
+- ✅ Day 1 – Project Setup
+- ✅ Day 2 – React + Webcam Integration
+- ✅ Day 3 – Live Webcam in HandTracker
+- ✅ Day 4 – MediaPipe Hand Detector Initialized
+- ✅ Day 5 – Real-time Hand Landmark Detection (21 Points)
+- 🔄 Day 6 – Draw Hand Skeleton (Coming Next)
 
-- ✅ Day 1 – Project setup
-- ✅ Day 2 – React + Webcam
-- ✅ Day 3 – Live webcam in HandTracker
-- ⏳ Day 4 – AI Hand Detection
-- ⏳ Day 5 – Gesture Recognition
 
 ## Screenshots
 
@@ -44,3 +45,16 @@ An AI-powered gesture-controlled gaming platform that allows users to play games
 ### Screenshot
 
 ![Day 4](screenshots/day4-mediapipe-loaded.png)
+
+### Day 5 – Hand Landmark Detection
+
+#### Features
+- Successfully detected a hand in real time using MediaPipe.
+- Extracted all **21 hand landmark coordinates**.
+- Displayed **Hand Detected / No Hand** status dynamically.
+- Logged landmark coordinates (`x`, `y`, `z`) to the browser console.
+- Built the foundation for gesture recognition and hand skeleton visualization.
+
+### screenshot
+
+![Day 5](screenshots/day5-hand-landmark-detection.png)
