@@ -1,11 +1,50 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createHandDetector } from "../services/handDetector";
 import Webcam from "react-webcam";
 
 function HandTracker() {
 
+  // 1️⃣ Refs and state
+  const webcamRef = useRef(null);
+  const detectorRef = useRef(null);
+  const [handDetected, setHandDetected] = useState(false);
+
+  // 2️⃣ useEffect to load detector
   useEffect(() => {
-    createHandDetector();
+    async function load() {
+      detectorRef.current = await createHandDetector();
+      console.log("Detector Ready");
+    }
+    
+     load();
+  }, []);
+  
+  // 3️⃣ useEffect to detect hands
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      if (
+        detectorRef.current &&
+        webcamRef.current &&
+        webcamRef.current.video.readyState === 4
+      ) {
+        const video = webcamRef.current.video;
+        
+        const result = detectorRef.current.detectForVideo(
+          video,
+          performance.now()
+        );
+
+        if (result.landmarks.length > 0) {
+          setHandDetected(true);
+
+          console.log(result.landmarks);
+        } else {
+          setHandDetected(false);
+        }
+      }
+    }, 50);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -21,8 +60,12 @@ function HandTracker() {
       }}
     >
       <h2>🤚 Hand Tracker</h2>
+      <p>
+        {handDetected ? "🟢 Hand Detected" : "🔴 No Hand"}
+      </p>
 
       <Webcam
+      ref={webcamRef}
   audio={false}
   mirrored={true}
   screenshotFormat="image/jpeg"
